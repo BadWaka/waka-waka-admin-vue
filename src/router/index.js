@@ -11,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index
+    },
+    {
+      path: '/addArticle',
+      name: 'AddOrEditArticle',
+      component: AddOrEditArticle
     }
   ]
 })

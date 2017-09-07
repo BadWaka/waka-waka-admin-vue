@@ -1,7 +1,15 @@
 <template>
-  <div class="addOrEditArticle">
-    AddOrEditArticle
-  </div>
+  <!--添加或编辑文章-->
+  <section class="addOrEditArticle">
+    <!--头部-->
+    <header class="header">
+      <span class="title">{{title}}</span>
+    </header>
+    <!--内容区域-->
+    <section>
+      
+    </section>
+  </section>
 </template>
 
 <script>
@@ -9,29 +17,26 @@
     name: 'AddOrEditArticle',
     data() {
       return {
+        title: '添加作品',
         msg: 'Welcome to Your Vue.js App'
       }
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
+<style scoped lang="scss">
+
+  .header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    color: #fff;
+    background: #000;
+    font-size: 20px;
+
+    .title {
+      margin-left: 20px;
+    }
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
 </style>
