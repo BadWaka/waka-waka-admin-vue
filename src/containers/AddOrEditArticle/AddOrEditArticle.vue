@@ -51,7 +51,10 @@
         </el-form-item>
         <!--内容-->
         <el-form-item label="内容" prop="content">
-          <el-input v-model="formData.content"></el-input>
+          <el-input v-model="formData.content"
+                    type="textarea"
+                    :rows="10">
+          </el-input>
         </el-form-item>
         <!--按钮栏-->
         <el-form-item>
@@ -136,6 +139,21 @@
         }, {
           value: 'JavaScript',
           label: 'JavaScript'
+        }, {
+          value: 'React',
+          label: 'React'
+        }, {
+          value: 'Vue',
+          label: 'Vue'
+        }, {
+          value: 'Angular',
+          label: 'Angular'
+        }, {
+          value: 'Canvas',
+          label: 'Canvas'
+        }, {
+          value: 'WebGL',
+          label: 'WebGL'
         }],
       }
     },
