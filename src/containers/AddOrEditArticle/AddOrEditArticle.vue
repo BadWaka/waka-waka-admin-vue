@@ -69,6 +69,7 @@
 
 <script>
   import axios from 'axios';
+  import httpConfig from '../../utils/http.config';
 
   export default {
     name: 'AddOrEditArticle',
@@ -186,9 +187,19 @@
         // 重置表单 api
         this.$refs[formName].resetFields();
       },
+      // 创建文章
+      createArticle() {
+        axios.post(`${httpConfig.apiHost}/api/getArticle`)
+          .then(function (response) {
+            console.log('response', response);
+          })
+          .catch(function (error) {
+            console.log('error', error);
+          });
+      },
       // axios 测试
       axiosTest() {
-        axios.get('http://localhost:5000/api/getArticle')
+        axios.get(`${httpConfig.apiHost}/api/getArticle`)
           .then(function (response) {
             console.log('response', response);
           })
