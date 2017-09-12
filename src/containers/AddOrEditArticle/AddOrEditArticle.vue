@@ -60,6 +60,7 @@
         <el-form-item>
           <el-button type="primary" @click="submitForm('formData')">立即创建</el-button>
           <el-button @click="resetForm('formData')">重置</el-button>
+          <el-button @click="axiosTest()">axios 测试</el-button>
         </el-form-item>
       </el-form>
     </section>
@@ -67,6 +68,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'AddOrEditArticle',
     data() {
@@ -180,7 +183,18 @@
       },
       // 重置表单
       resetForm(formName) {
+        // 重置表单 api
         this.$refs[formName].resetFields();
+      },
+      // axios 测试
+      axiosTest() {
+        axios.get('http://www.baidu.com')
+          .then(function (response) {
+            console.log('response', response);
+          })
+          .catch(function (error) {
+            console.log('error', error);
+          });
       }
     }
   }
