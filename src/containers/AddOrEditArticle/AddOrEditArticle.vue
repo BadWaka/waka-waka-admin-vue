@@ -188,7 +188,7 @@
       },
       // axios 测试
       axiosTest() {
-        axios.get('http://www.baidu.com')
+        axios.get('http://localhost:5000/api/getArticle')
           .then(function (response) {
             console.log('response', response);
           })
