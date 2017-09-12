@@ -2,6 +2,13 @@
 
 > 后台管理程序
 
+# 依赖
+
+- axios 网络请求库
+- element-ui UI 库
+- vue
+- vue-router
+
 ## Build Setup
 
 ``` bash
