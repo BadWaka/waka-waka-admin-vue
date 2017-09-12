@@ -81,7 +81,7 @@
           intro: '',
           content: '',
           type: '',
-          tag: '',
+          tag: [],
         },
         // 表单校验规则
         formDataRules: {
@@ -90,13 +90,30 @@
             {
               required: true,
               message: '请输入标题',
-              trigger: 'blur'
+              trigger: 'change'
             },
             {
               min: 3,
               max: 5,
               message: '长度在 3 到 5 个字符',
-              trigger: 'blur'
+              trigger: 'change'
+            }
+          ],
+          // 类型
+          type: [
+            {
+              required: true,
+              message: '请选择类型',
+              trigger: 'change'
+            }
+          ],
+          // 标签
+          tag: [
+            {
+              type: 'array',
+              required: true,
+              message: '请至少选择一个标签',
+              trigger: 'change'
             }
           ],
           // 内容
@@ -107,68 +124,58 @@
               trigger: 'change'
             }
           ],
-          // 类型
-          type: [
-            {
-              required: true,
-              message: '请选择类型',
-              trigger: 'blur'
-            }
-          ],
-          // 标签
-          tag: [
-            {
-              required: true,
-              message: '请选择标签',
-              trigger: 'blur'
-            }
-          ]
         },
         // 类型选项
-        typeOptions: [{
-          value: '技术',
-          label: '技术'
-        }],
+        typeOptions: [
+          {
+            value: '技术',
+            label: '技术'
+          }
+        ],
         // 标签选项
-        tagOptions: [{
-          value: 'HTML',
-          label: 'HTML'
-        }, {
-          value: 'CSS',
-          label: 'CSS'
-        }, {
-          value: 'JavaScript',
-          label: 'JavaScript'
-        }, {
-          value: 'React',
-          label: 'React'
-        }, {
-          value: 'Vue',
-          label: 'Vue'
-        }, {
-          value: 'Angular',
-          label: 'Angular'
-        }, {
-          value: 'Canvas',
-          label: 'Canvas'
-        }, {
-          value: 'WebGL',
-          label: 'WebGL'
-        }],
+        tagOptions: [
+          {
+            value: 'HTML',
+            label: 'HTML'
+          }, {
+            value: 'CSS',
+            label: 'CSS'
+          }, {
+            value: 'JavaScript',
+            label: 'JavaScript'
+          }, {
+            value: 'React',
+            label: 'React'
+          }, {
+            value: 'Vue',
+            label: 'Vue'
+          }, {
+            value: 'Angular',
+            label: 'Angular'
+          }, {
+            value: 'Canvas',
+            label: 'Canvas'
+          }, {
+            value: 'WebGL',
+            label: 'WebGL'
+          }
+        ],
       }
     },
     methods: {
       // 提交表单
       submitForm(formName) {
+        console.log('formName', formName, 'formData', this.formData);
         this.$refs[formName].validate((valid) => {
           // 这里的 valid 是一个 bool 型，如果校验成功，valid === true ，如果校验失败，valid === false
           console.log('valid', valid);
-          if (valid) {
-            alert('submit!');
-          } else {
+          // 校验失败
+          if (!valid) {
             console.log('error submit!!');
             return false;
           }
+          // 校验成功
+          console.info('校验成功');
         });
       },
       // 重置表单
