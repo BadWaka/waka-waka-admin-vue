@@ -186,11 +186,11 @@
     align-items: center;
     height: 60px;
     color: #fff;
-    background: #000;
+    background: #20A0FF;
     font-size: 20px;
 
     .title {
-      margin-left: 20px;
+      margin-left: 40px;
     }
   }
 
