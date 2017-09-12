@@ -10,15 +10,47 @@
       <!--表单-->
       <el-form :model="formData"
                ref="formData"
-               :rules="rules"
+               :rules="formDataRules"
                :label-position="labelPosition">
+        <!--标题-->
         <el-form-item label="标题" prop="title">
           <el-input v-model="formData.title"></el-input>
         </el-form-item>
+        <!--简介-->
         <el-form-item label="简介">
           <el-input v-model="formData.intro"></el-input>
         </el-form-item>
-        <el-form-item label="内容">
+        <!--类型选择框-->
+        <el-form-item label="类型" prop="type">
+          <el-select class="el-select"
+                     v-model="formData.type"
+                     placeholder="请选择">
+            <el-option
+              v-for="item in typeOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <!--标签选择框-->
+        <el-form-item label="标签" prop="tag">
+          <el-select class="el-select"
+                     v-model="formData.tag"
+                     multiple
+                     filterable
+                     allow-create
+                     placeholder="请选择标签">
+            <el-option
+              v-for="item in tagOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <!--内容-->
+        <el-form-item label="内容" prop="content">
           <el-input v-model="formData.content"></el-input>
         </el-form-item>
         <!--按钮栏-->
@@ -44,18 +76,67 @@
         formData: {
           title: '',
           intro: '',
-          content: ''
+          content: '',
+          type: '',
+          tag: '',
         },
         // 表单校验规则
-        rules: {
+        formDataRules: {
+          // 标题
           title: [
-            {required: true, message: '请输入活动名称', trigger: 'blur'},
-            {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+            {
+              required: true,
+              message: '请输入标题',
+              trigger: 'blur'
+            },
+            {
+              min: 3,
+              max: 5,
+              message: '长度在 3 到 5 个字符',
+              trigger: 'blur'
+            }
           ],
-          region: [
-            {required: true, message: '请选择活动区域', trigger: 'change'}
+          // 内容
+          content: [
+            {
+              required: true,
+              message: '请填写内容',
+              trigger: 'change'
+            }
+          ],
+          // 类型
+          type: [
+            {
+              required: true,
+              message: '请选择类型',
+              trigger: 'blur'
+            }
+          ],
+          // 标签
+          tag: [
+            {
+              required: true,
+              message: '请选择标签',
+              trigger: 'blur'
+            }
           ]
-        }
+        },
+        // 类型选项
+        typeOptions: [{
+          value: '技术',
+          label: '技术'
+        }],
+        // 标签选项
+        tagOptions: [{
+          value: 'HTML',
+          label: 'HTML'
+        }, {
+          value: 'CSS',
+          label: 'CSS'
+        }, {
+          value: 'JavaScript',
+          label: 'JavaScript'
+        }],
       }
     },
     methods: {
@@ -97,6 +178,10 @@
 
   .content {
     padding: 40px;
+
+    .el-select {
+      width: 400px;
+    }
   }
 
 </style>

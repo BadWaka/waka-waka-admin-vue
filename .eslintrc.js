@@ -28,5 +28,6 @@ module.exports = {
     'no-multiple-empty-lines': 0,
     'no-unused-vars': 0,
     'space-before-function-paren': 0,
+    'comma-dangle': 0,
   }
 };
